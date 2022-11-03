@@ -84,9 +84,9 @@ export const NavBar = () => {
 
         <div className={styles.nav_container__items_container_horizontal}>
           <CustomLink to="/">Home</CustomLink>
-          <CustomLink to="/about">Brands</CustomLink>
-          <CustomLink to="/contact">Favourites</CustomLink>
-          <CustomLink to="/guestbook">Cart</CustomLink>
+          <CustomLink to="/brand">Brands</CustomLink>
+          <CustomLink to="/favourites">Favourites</CustomLink>
+          <CustomLink to="/cart">Cart</CustomLink>
         </div>
       </div>
     </nav>
