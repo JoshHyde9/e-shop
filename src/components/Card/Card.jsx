@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { Icon } from "../Icon/Icon";
 
 import styles from "./Card.module.scss";
 
@@ -9,7 +10,10 @@ import styles from "./Card.module.scss";
 export const Card = ({ bike }) => {
   return (
     <div className={styles.gallery_item}>
-      <p className={styles.favourite}>Favourite</p>
+      <div className={styles.favourite}>
+        <Icon icon="favourite" size="40px" strokeColour="#ff0000" />
+      </div>
+
       <Link to={`/bike/${bike.id}`}>
         <img className={styles.image} src={bike.image_url} alt={bike.name} />
       </Link>
@@ -19,8 +23,22 @@ export const Card = ({ bike }) => {
 
         <p>${bike.price.toLocaleString()}</p>
         <div className={styles.util}>
-          <p>{bike.quantity > 0 ? "In stock" : "Out of stock"}</p>
-          <p>Add to cart</p>
+          <div className={styles.icon}>
+            {bike.quantity > 0 ? (
+              <>
+                <Icon icon="inStock" size="30px" strokeColour="#000" />
+                <p>In Stock</p>
+              </>
+            ) : (
+              <>
+                <Icon icon="outOfStock" size="30px" strokeColour="#000" />
+                <p>Out of stock</p>
+              </>
+            )}
+          </div>
+          <div>
+            <Icon icon="addToCart" size="30px" strokeColour="#000" />
+          </div>
         </div>
       </div>
     </div>
