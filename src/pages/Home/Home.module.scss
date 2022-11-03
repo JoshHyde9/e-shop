@@ -4,8 +4,13 @@
 .gallery {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 1rem;
+  gap: 2rem 1rem;
   margin-top: 1rem;
+
+  @include media-queries($md, 999999px) {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
   @include media-queries($md, $lg) {
     grid-template-columns: repeat(2, 1fr);
@@ -19,7 +24,7 @@
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @include media-queries($xxl, 999999999px) {
+  @include media-queries($xxl, 999999px) {
     grid-template-columns: repeat(4, 1fr);
   }
 }
