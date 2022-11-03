@@ -1,0 +1,8 @@
+@use "./variables" as *;
+
+// Media query
+@mixin media-queries($min, $max) {
+  @media only screen and (min-width: ($min + 1px)) and (max-width: $max) {
+    @content;
+  }
+}
