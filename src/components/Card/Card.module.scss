@@ -1,0 +1,40 @@
+@use "../../scss/partials/variables" as *;
+
+.gallery_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 1rem;
+  box-shadow: 0px 5px 10px 0px rgba(50, 50, 50, 0.25);
+  padding: 1rem;
+  border: 1px solid #efefef;
+
+  .favourite {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .image {
+    width: 100%;
+    height: auto;
+  }
+
+  .more__info {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: flex-end;
+    height: 100%;
+    width: 100%;
+
+    .brand {
+      color: $brand-colour;
+    }
+
+    .util {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
