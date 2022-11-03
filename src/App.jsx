@@ -1,8 +1,14 @@
+import { Routes, Route } from "react-router-dom";
+
+// Pages
+import { Home } from "./pages/Home/Home";
+import { Bike } from "./pages/Bike";
+
 export const App = () => {
   return (
-    <div>
-      <h1>Hello World!</h1>
-      <p>This is a title</p>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/bike/:bikeId" element={<Bike />} />
+    </Routes>
   );
 };
