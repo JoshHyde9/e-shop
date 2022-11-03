@@ -26,18 +26,18 @@ export const Card = ({ bike }) => {
           <div className={styles.icon}>
             {bike.quantity > 0 ? (
               <>
-                <Icon icon="inStock" size="30px" strokeColour="#000" />
+                <Icon icon="inStock" size="30px" strokeColour="#00a300" />
                 <p>In Stock</p>
               </>
             ) : (
               <>
-                <Icon icon="outOfStock" size="30px" strokeColour="#000" />
+                <Icon icon="outOfStock" size="30px" strokeColour="#e1341e" />
                 <p>Out of stock</p>
               </>
             )}
           </div>
           <div>
-            <Icon icon="addToCart" size="30px" strokeColour="#000" />
+            <Icon icon="addToCart" size="30px" strokeColour="#4d4d4d" />
           </div>
         </div>
       </div>
