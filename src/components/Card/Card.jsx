@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { fixURLParam } from "../../utils/parseURLParam";
 import { Icon } from "../Icon/Icon";
 
 import styles from "./Card.module.scss";
@@ -8,6 +9,7 @@ import styles from "./Card.module.scss";
  * @param {{bike: {brand: string, name: string, colours: string[], sizes: string[], price: number, quantity: number, image_url: string}}} props
  */
 export const Card = ({ bike }) => {
+  const brandParam = fixURLParam(bike.brand);
   return (
     <div className={styles.gallery_item}>
       <div className={styles.favourite}>
@@ -19,7 +21,9 @@ export const Card = ({ bike }) => {
       </Link>
 
       <div className={styles.more__info}>
-        <h3 className={styles.brand}>{bike.brand}</h3>
+        <Link to={`/brand/${brandParam}`}>
+          <h3 className={styles.brand}>{bike.brand}</h3>
+        </Link>
         <h4 className={styles.name}>{bike.name}</h4>
 
         <p>${bike.price.toLocaleString()}</p>
