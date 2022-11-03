@@ -17,6 +17,7 @@ export const Card = ({ bike }) => {
       <Link to={`/bike/${bike.id}`}>
         <img className={styles.image} src={bike.image_url} alt={bike.name} />
       </Link>
+
       <div className={styles.more__info}>
         <h3 className={styles.brand}>{bike.brand}</h3>
         <h4 className={styles.name}>{bike.name}</h4>
