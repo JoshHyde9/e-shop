@@ -7,6 +7,9 @@ import { getBrandItemsByName } from "../../../services/brand";
 // Components
 import { Card } from "../../../components/Card/Card";
 
+// Component styles
+import styles from "../../Home/Home.module.scss";
+
 export const BrandName = () => {
   const { brandName } = useParams();
 
@@ -22,7 +25,7 @@ export const BrandName = () => {
     getBrand();
   }, []);
   return (
-    <div className="gallery">
+    <div className={styles.gallery}>
       {brandItems.map((bike) => (
         <Card key={bike.id} bike={bike} />
       ))}
