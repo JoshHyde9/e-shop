@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
+// Database
 import { getAllBrands } from "../../services/brand";
+
+// Util
 import { fixURLParam } from "../../utils/parseURLParam";
+
+// Styles
+import homeStyles from "../Home/Home.module.scss";
+import brandStyles from "./Brand.module.scss";
 
 export const Brand = () => {
   const [brands, setBrands] = useState([]);
@@ -16,17 +24,21 @@ export const Brand = () => {
   }, []);
 
   return (
-    <div>
-      <h1>This is where all of the brands are</h1>
+    <div className={homeStyles.gallery}>
       {brands.map((brand) => {
         const fixedBrandParam = fixURLParam(brand.name);
         return (
-          <div key={brand.id}>
-            <Link to={`/brand/${fixedBrandParam}`}>
-              <img src={brand.image_url} alt={brand.name} />
-              <h3>{brand.name}</h3>
-            </Link>
-          </div>
+          <Link key={brand.id} to={`/brand/${fixedBrandParam}`}>
+            <div className={brandStyles.gallery__item}>
+              <div className={brandStyles.image__container}>
+                <img
+                  className={brandStyles.image}
+                  src={brand.image_url}
+                  alt={brand.name}
+                />
+              </div>
+            </div>
+          </Link>
         );
       })}
     </div>
