@@ -21,5 +21,9 @@ export const getBrandItemsByName = async (brandName) => {
 
   const querySnapshot = await getDocs(q);
 
+  if (querySnapshot.docs.length <= 0) {
+    return null;
+  }
+
   return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 };

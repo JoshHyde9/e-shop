@@ -29,3 +29,8 @@ h5,
 h6 {
   font-family: Inter, sans-serif;
 }
+
+.error {
+  text-align: center;
+  margin-top: 1rem;
+}

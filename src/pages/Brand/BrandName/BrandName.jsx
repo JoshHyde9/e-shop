@@ -14,10 +14,15 @@ export const BrandName = () => {
   const { brandName } = useParams();
 
   const [brandItems, setBrandItems] = useState([]);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const getBrand = async () => {
       const data = await getBrandItemsByName(brandName);
+
+      if (!data) {
+        return setError("Brand does not exist");
+      }
 
       setBrandItems(data);
     };
@@ -25,10 +30,16 @@ export const BrandName = () => {
     getBrand();
   }, []);
   return (
-    <div className={styles.gallery}>
-      {brandItems.map((bike) => (
-        <Card key={bike.id} bike={bike} />
-      ))}
-    </div>
+    <>
+      {error ? (
+        <h1 className="error">Brand not found.</h1>
+      ) : (
+        <div className={styles.gallery}>
+          {brandItems.map((bike) => (
+            <Card key={bike.id} bike={bike} />
+          ))}
+        </div>
+      )}
+    </>
   );
 };
