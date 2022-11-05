@@ -85,6 +85,10 @@
   position: relative;
 }
 
+.link_item:hover {
+  color: $brand-colour;
+}
+
 .hambuger__top_transition {
   rotate: 45deg;
   transform: translate(15%, 0.875rem);
