@@ -13,7 +13,7 @@ import styles from "./Bike.module.scss";
 export const Bike = () => {
   const { bikeId } = useParams();
 
-  const [bike, setBike] = useState({});
+  const [data, setData] = useState({});
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -26,16 +26,17 @@ export const Bike = () => {
 
       const urlBikeBrand = fixURLParam(data.brand);
 
-      setBike({ url: urlBikeBrand, ...data });
+      setData({ url: urlBikeBrand, bike: data });
     };
 
     getBike();
   }, []);
 
-  if (error) {
+  if (!data.bike) {
     return <h1>{error}</h1>;
   }
 
+  const { bike } = data;
   return (
     <div className={styles.bike_layout}>
       <div className={styles.image_container}>
