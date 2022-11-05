@@ -33,7 +33,7 @@ export const Bike = () => {
   }, []);
 
   if (error) {
-    return <h1>error</h1>;
+    return <h1>{error}</h1>;
   }
 
   return (
