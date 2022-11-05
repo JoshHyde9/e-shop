@@ -18,6 +18,12 @@
     width: 90%;
     margin: inherit;
 
+    .favourite {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+    }
+
     @include media-queries($lg, 999999px) {
       width: 40%;
     }
