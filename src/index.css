@@ -7,6 +7,10 @@
   font-weight: 400;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -14,6 +18,9 @@
 
 body {
   box-sizing: border-box;
+  overflow-x: hidden;
+  width: 100vw;
+  min-height: 100vh;
 }
 
 a {
@@ -33,4 +40,103 @@ h6 {
 .error {
   text-align: center;
   margin-top: 1rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  width: 100%;
+  background-color: #246ef7;
+  color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: filter 300ms ease-in-out;
+  cursor: pointer;
+}
+
+.btn:hover {
+  filter: brightness(110%);
+}
+
+.qty-input {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: #246ef7;
+  border: 1px solid #246ef7;
+  width: fit-content;
+  border-radius: 10px;
+  margin: 0;
+}
+
+.qty-input .product-qty,
+.qty-input .qty-count {
+  background: transparent;
+  color: inherit;
+  font-weight: bold;
+  font-size: inherit;
+  border: none;
+  display: inline-block;
+  min-width: 0;
+  height: 2.5rem;
+  line-height: 1;
+}
+
+.qty-input .product-qty {
+  width: 50px;
+  min-width: 0;
+  display: inline-block;
+  text-align: center;
+  appearance: textfield;
+}
+
+.qty-input .qty-count {
+  padding: 0;
+  cursor: pointer;
+  width: 2.5rem;
+  font-size: 1.25em;
+  text-indent: -100px;
+  overflow: hidden;
+  position: relative;
+  transition: background-color ease-in-out 300ms;
+}
+
+.qty-input .qty-count:hover {
+  background-color: #e2ecff;
+}
+
+.qty-input .qty-count::before,
+.qty-input .qty-count::after {
+  content: "";
+  height: 2px;
+  width: 10px;
+  position: absolute;
+  display: block;
+  background: #246ef7;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.qty-input .qty-count.qty-count--minus {
+  border-right: 1px solid #246ef7;
+}
+
+.qty-input .qty-count.qty-count--add {
+  border-left: 1px solid #246ef7;
+}
+
+.qty-input .qty-count.qty-count--add::after {
+  transform: rotate(90deg);
+}
+
+.select {
+  outline: none;
+  border: none;
+  background-color: inherit;
+  padding: 0.25rem 0.5rem;
+  border-bottom: 2px solid #246ef7;
 }
