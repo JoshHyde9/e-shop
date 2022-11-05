@@ -33,7 +33,7 @@ export const Bike = () => {
   }, []);
 
   if (!data.bike) {
-    return <h1>{error}</h1>;
+    return <h1 className="error">{error}</h1>;
   }
 
   const { bike } = data;
@@ -42,47 +42,60 @@ export const Bike = () => {
       <div className={styles.image_container}>
         <img className={styles.image} src={bike.image_url} alt={bike.name} />
       </div>
-      <div>
-        <Link to={`/brand/${bike.url}`}>
-          <p className={styles.brand}>{bike.brand}</p>
+      <div className={styles.bike_container}>
+        <Link className={styles.brand} to={`/brand/${data.url}`}>
+          <p>{bike.brand}</p>
         </Link>
 
-        <div>
+        <div className={styles.bike_container__info}>
           <h1>{bike.name}</h1>
-          <p>${bike.price && bike.price.toLocaleString()}</p>
+          <p className={styles.price}>${bike.price.toLocaleString()}</p>
           <p>Shop quantity: {bike.quantity}</p>
         </div>
 
         {/* TODO: Turn selection into component */}
         <div className={styles.option}>
           <label htmlFor="size">Size: </label>
-          <select name="" id="">
-            {bike.sizes &&
-              bike.sizes.map((size, i) => (
-                <option key={i} value={size}>
-                  {size}
-                </option>
-              ))}
+          <select className="select" name="size">
+            <option hidden>Size</option>
+            {bike.sizes.map((size, i) => (
+              <option key={i} value={size}>
+                {size}
+              </option>
+            ))}
           </select>
         </div>
 
         {/* TODO: Turn selection into component */}
         <div className={styles.option}>
           <label htmlFor="colour">Colour: </label>
-          <select name="" id="">
-            {bike.colours &&
-              bike.colours.map((colour, i) => (
-                <option key={i} value={colour}>
-                  {colour}
-                </option>
-              ))}
+          <select className="select" name="colour">
+            <option hidden>Colour</option>
+            {bike.colours.map((colour, i) => (
+              <option key={i} value={colour}>
+                {colour}
+              </option>
+            ))}
           </select>
 
           {/* Cart */}
           <div className={styles.cart}>
             {/* TODO: Turn input into a component */}
-            <input type="number" defaultValue={1} />
-            <button>Add to cart</button>
+            <div className="qty-input">
+              <button className="qty-count qty-count--minus" type="button">
+                -
+              </button>
+              <input
+                className="product-qty"
+                name="quantity"
+                type="number"
+                defaultValue={1}
+              />
+              <button className="qty-count qty-count--add" type="button">
+                +
+              </button>
+            </div>
+            <button className="btn">Add to cart</button>
           </div>
         </div>
       </div>

@@ -1,0 +1,68 @@
+@use "../../scss/partials/variables" as *;
+@use "../../scss/partials/mixins" as *;
+
+.bike_layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1200px;
+
+  @include media-queries($lg, 999999px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .image_container {
+    width: 90%;
+    margin: inherit;
+
+    @include media-queries($lg, 999999px) {
+      width: 40%;
+    }
+
+    .image {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .bike_container {
+    margin: 0 1rem;
+
+    @include media-queries($md, 999999px) {
+      margin: 0;
+    }
+
+    .brand {
+      display: block;
+      width: fit-content;
+      p {
+        color: $brand-colour;
+      }
+    }
+
+    &__info {
+      margin-top: 1rem;
+
+      * {
+        margin: 0.5rem 0;
+      }
+
+      .price {
+        font-size: 1.5rem;
+      }
+    }
+
+    .option {
+      margin: 0.5rem 0;
+    }
+
+    .cart {
+      div {
+        margin: 0.5rem 0;
+      }
+    }
+  }
+}
