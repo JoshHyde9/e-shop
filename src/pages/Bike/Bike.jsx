@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
+// Components
+import { Icon } from "../../components/Icon/Icon";
+
 // Db
 import { getBikeById } from "../../services/bike";
 
@@ -53,51 +56,58 @@ export const Bike = () => {
           <p>Shop quantity: {bike.quantity}</p>
         </div>
 
-        {/* TODO: Turn selection into component */}
-        <div className={styles.option}>
-          <label htmlFor="size">Size: </label>
-          <select className="select" name="size">
-            <option hidden>Size</option>
-            {bike.sizes.map((size, i) => (
-              <option key={i} value={size}>
-                {size}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {/* TODO: Turn selection into component */}
-        <div className={styles.option}>
-          <label htmlFor="colour">Colour: </label>
-          <select className="select" name="colour">
-            <option hidden>Colour</option>
-            {bike.colours.map((colour, i) => (
-              <option key={i} value={colour}>
-                {colour}
-              </option>
-            ))}
-          </select>
-
-          {/* Cart */}
-          <div className={styles.cart}>
-            {/* TODO: Turn input into a component */}
-            <div className="qty-input">
-              <button className="qty-count qty-count--minus" type="button">
-                -
-              </button>
-              <input
-                className="product-qty"
-                name="quantity"
-                type="number"
-                defaultValue={1}
-              />
-              <button className="qty-count qty-count--add" type="button">
-                +
-              </button>
+        {bike.quantity > 0 ? (
+          <>
+            <div className={styles.option}>
+              <label htmlFor="size">Size: </label>
+              <select className="select" name="size">
+                <option hidden>Size</option>
+                {bike.sizes.map((size, i) => (
+                  <option key={i} value={size}>
+                    {size}
+                  </option>
+                ))}
+              </select>
             </div>
-            <button className="btn">Add to cart</button>
+
+            <div className={styles.option}>
+              <label htmlFor="colour">Colour: </label>
+              <select className="select" name="colour">
+                <option hidden>Colour</option>
+                {bike.colours.map((colour, i) => (
+                  <option key={i} value={colour}>
+                    {colour}
+                  </option>
+                ))}
+              </select>
+
+              {/* Cart */}
+              <div className={styles.cart}>
+                {/* TODO: Turn input into a component */}
+                <div className="qty-input">
+                  <button className="qty-count qty-count--minus" type="button">
+                    -
+                  </button>
+                  <input
+                    className="product-qty"
+                    name="quantity"
+                    type="number"
+                    defaultValue={1}
+                  />
+                  <button className="qty-count qty-count--add" type="button">
+                    +
+                  </button>
+                </div>
+                <button className="btn">Add to cart</button>
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className={styles.out_of_stock}>
+            <Icon icon="outOfStock" strokeColour="#ff0000" size="32" />
+            <p>Out of stock</p>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
