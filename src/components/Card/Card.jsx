@@ -6,13 +6,17 @@ import { Icon } from "../Icon/Icon";
 import styles from "./Card.module.scss";
 
 /**
- * @param {{bike: {brand: string, name: string, colours: string[], sizes: string[], price: number, quantity: number, image_url: string}}} props
+ * @param {{bike: {id: string, brand: string, name: string, colours: string[], sizes: string[], price: number, quantity: number, image_url: string}}, handleFavourite: () => {}} props
  */
-export const Card = ({ bike }) => {
+export const Card = ({ bike, handleFavourite }) => {
   const brandParam = fixURLParam(bike.brand);
+
   return (
     <div className={styles.gallery_item}>
-      <div className={styles.favourite}>
+      <div
+        className={styles.favourite}
+        onClick={() => handleFavourite(bike.id)}
+      >
         <Icon icon="favourite" size="40px" strokeColour="#ff0000" />
       </div>
 
@@ -60,4 +64,5 @@ Card.propTypes = {
     quantity: PropTypes.number,
     image_url: PropTypes.string.isRequired,
   }),
+  handleFavourite: PropTypes.func.isRequired,
 };
