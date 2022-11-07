@@ -6,7 +6,7 @@ import { Icon } from "../Icon/Icon";
 import styles from "./Card.module.scss";
 
 /**
- * @param {{bike: {id: string, brand: string, name: string, colours: string[], sizes: string[], price: number, quantity: number, image_url: string}}, handleFavourite: (bikeIdL strng) => any, favourited: (bikeId: string) => boolean} props
+ * @param {{bike: {id: string, brand: string, name: string, colours: string[], sizes: string[], price: number, quantity: number, image_url: string}}, handleFavourite: (bikeId: string) => any, favourited: (bikeId: string) => boolean} props
  */
 export const Card = ({ bike, handleFavourite, favourited }) => {
   const brandParam = fixURLParam(bike.brand);
