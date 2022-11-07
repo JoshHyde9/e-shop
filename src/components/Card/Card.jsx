@@ -6,7 +6,7 @@ import { Icon } from "../Icon/Icon";
 import styles from "./Card.module.scss";
 
 /**
- * @param {{bike: {id: string, brand: string, name: string, colours: string[], sizes: string[], price: number, quantity: number, image_url: string}}, favourited: () => {}} props
+ * @param {{bike: {id: string, brand: string, name: string, colours: string[], sizes: string[], price: number, quantity: number, image_url: string}}, handleFavourite: (bikeIdL strng) => any, favourited: (bikeId: string) => boolean} props
  */
 export const Card = ({ bike, handleFavourite, favourited }) => {
   const brandParam = fixURLParam(bike.brand);
@@ -69,5 +69,6 @@ Card.propTypes = {
     quantity: PropTypes.number,
     image_url: PropTypes.string.isRequired,
   }),
-  favourited: PropTypes.func,
+  handleFavourite: PropTypes.func.isRequired,
+  favourited: PropTypes.func.isRequired,
 };
