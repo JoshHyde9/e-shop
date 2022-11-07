@@ -13,7 +13,7 @@ import { FavouritesContext } from "../../hooks/FavouritesContext";
 import styles from "./Home.module.scss";
 
 export const Home = () => {
-  const [favourites, setFavourites] = useContext(FavouritesContext);
+  const [, , toggleFavourite, isFavourite] = useContext(FavouritesContext);
 
   const [bikes, setBikes] = useState([]);
 
@@ -25,14 +25,15 @@ export const Home = () => {
     getData();
   }, []);
 
-  const handleFavourite = (bikeId) => {
-    setFavourites((prevState) => [...prevState, { id: bikeId }]);
-  };
-
   return (
     <div className={styles.gallery}>
       {bikes.map((bike) => (
-        <Card key={bike.id} bike={bike} handleFavourite={handleFavourite} />
+        <Card
+          key={bike.id}
+          bike={bike}
+          handleFavourite={toggleFavourite}
+          favourited={isFavourite}
+        />
       ))}
     </div>
   );

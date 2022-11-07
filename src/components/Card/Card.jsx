@@ -6,9 +6,9 @@ import { Icon } from "../Icon/Icon";
 import styles from "./Card.module.scss";
 
 /**
- * @param {{bike: {id: string, brand: string, name: string, colours: string[], sizes: string[], price: number, quantity: number, image_url: string}}, handleFavourite: () => {}} props
+ * @param {{bike: {id: string, brand: string, name: string, colours: string[], sizes: string[], price: number, quantity: number, image_url: string}}, favourited: () => {}} props
  */
-export const Card = ({ bike, handleFavourite }) => {
+export const Card = ({ bike, handleFavourite, favourited }) => {
   const brandParam = fixURLParam(bike.brand);
 
   return (
@@ -17,7 +17,12 @@ export const Card = ({ bike, handleFavourite }) => {
         className={styles.favourite}
         onClick={() => handleFavourite(bike.id)}
       >
-        <Icon icon="favourite" size="40px" strokeColour="#ff0000" />
+        <Icon
+          icon="favourite"
+          size="40px"
+          strokeColour="#ff0000"
+          fillColour={favourited(bike.id) ? "red" : "none"}
+        />
       </div>
 
       <Link to={`/bike/${bike.id}`}>
@@ -64,5 +69,5 @@ Card.propTypes = {
     quantity: PropTypes.number,
     image_url: PropTypes.string.isRequired,
   }),
-  handleFavourite: PropTypes.func.isRequired,
+  favourited: PropTypes.func,
 };

@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
+
+import { FavouritesContext } from "../../../hooks/FavouritesContext";
 
 // Database
 import { getBrandItemsByName } from "../../../services/brand";
@@ -12,6 +14,8 @@ import styles from "../../Home/Home.module.scss";
 
 export const BrandName = () => {
   const { brandName } = useParams();
+
+  const [, , toggleFavourite, isFavourite] = useContext(FavouritesContext);
 
   const [brandItems, setBrandItems] = useState([]);
   const [error, setError] = useState("");
@@ -36,7 +40,12 @@ export const BrandName = () => {
       ) : (
         <div className={styles.gallery}>
           {brandItems.map((bike) => (
-            <Card key={bike.id} bike={bike} />
+            <Card
+              key={bike.id}
+              bike={bike}
+              handleFavourite={toggleFavourite}
+              favourited={isFavourite}
+            />
           ))}
         </div>
       )}

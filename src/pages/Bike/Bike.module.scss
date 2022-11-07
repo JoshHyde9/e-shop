@@ -22,6 +22,10 @@
       display: flex;
       justify-content: flex-end;
       width: 100%;
+
+      svg {
+        cursor: pointer;
+      }
     }
 
     @include media-queries($lg, 999999px) {

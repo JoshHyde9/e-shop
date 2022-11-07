@@ -1,8 +1,10 @@
+import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 // Components
 import { Icon } from "../../components/Icon/Icon";
+import { FavouritesContext } from "../../hooks/FavouritesContext";
 
 // Db
 import { getBikeById } from "../../services/bike";
@@ -15,6 +17,7 @@ import styles from "./Bike.module.scss";
 
 export const Bike = () => {
   const { bikeId } = useParams();
+  const [, , toggleFavourite, isFavourite] = useContext(FavouritesContext);
 
   const [data, setData] = useState({});
   const [error, setError] = useState("");
@@ -35,10 +38,6 @@ export const Bike = () => {
     getBike();
   }, []);
 
-  const handleFavourite = () => {
-    console.log(bike.id);
-  };
-
   if (!data.bike) {
     return <h1 className="error">{error}</h1>;
   }
@@ -47,8 +46,16 @@ export const Bike = () => {
   return (
     <div className={styles.bike_layout}>
       <div className={styles.image_container}>
-        <div className={styles.favourite} onClick={handleFavourite}>
-          <Icon icon="favourite" size="32" strokeColour="#ff0000" />
+        <div
+          className={styles.favourite}
+          onClick={() => toggleFavourite(bike.id)}
+        >
+          <Icon
+            icon="favourite"
+            size="32"
+            strokeColour="#ff0000"
+            fillColour={isFavourite(bike.id) ? "red" : "none"}
+          />
         </div>
         <img className={styles.image} src={bike.image_url} alt={bike.name} />
       </div>
