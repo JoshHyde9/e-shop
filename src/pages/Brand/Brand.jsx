@@ -16,7 +16,6 @@ export const Brand = () => {
 
   useEffect(() => {
     const getData = async () => {
-      // TODO: Handle error if brands are not found on BE and FE
       const data = await getAllBrands();
 
       setBrands(data);
