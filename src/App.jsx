@@ -6,6 +6,7 @@ import { Bike } from "./pages/Bike/Bike";
 import { Brand } from "./pages/Brand/Brand";
 import { BrandName } from "./pages/Brand/BrandName/BrandName";
 import { FavouritesProvider } from "./hooks/FavouritesContext";
+import { Favourites } from "./pages/Favourites/Favourites";
 
 export const App = () => {
   return (
@@ -15,6 +16,7 @@ export const App = () => {
         <Route path="/bike/:bikeId" element={<Bike />} />
         <Route path="/brand" element={<Brand />} />
         <Route path="/brand/:brandName" element={<BrandName />} />
+        <Route path="/favourites" element={<Favourites />} />
       </Routes>
     </FavouritesProvider>
   );

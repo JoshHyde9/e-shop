@@ -1,0 +1,30 @@
+@use "../../scss/partials/variables.scss" as *;
+@use "../../scss/partials/mixins.scss" as *;
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem 1rem;
+  margin: 1rem 0;
+
+  @include media-queries($md, 999999px) {
+    max-width: 1200px;
+    margin: 1rem auto;
+  }
+
+  @include media-queries($md, $lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include media-queries($lg, $xl) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include media-queries($xl, $xxl) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include media-queries($xxl, 999999px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
