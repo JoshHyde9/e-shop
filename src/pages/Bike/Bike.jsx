@@ -4,6 +4,8 @@ import { Link, useParams } from "react-router-dom";
 
 // Components
 import { Icon } from "../../components/Icon/Icon";
+import { Quantity } from "../../components/Quanity";
+
 import { FavouritesContext } from "../../hooks/FavouritesContext";
 
 // Db
@@ -20,6 +22,7 @@ export const Bike = () => {
   const [, , toggleFavourite, isFavourite] = useContext(FavouritesContext);
 
   const [data, setData] = useState({});
+  const [quantity, setQuantity] = useState(1);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -97,21 +100,7 @@ export const Bike = () => {
 
               {/* Cart */}
               <div className={styles.cart}>
-                {/* TODO: Turn input into a component */}
-                <div className="qty-input">
-                  <button className="qty-count qty-count--minus" type="button">
-                    -
-                  </button>
-                  <input
-                    className="product-qty"
-                    name="quantity"
-                    type="number"
-                    defaultValue={1}
-                  />
-                  <button className="qty-count qty-count--add" type="button">
-                    +
-                  </button>
-                </div>
+                <Quantity quantity={quantity} setQuantity={setQuantity} />
                 <button className="btn">Add to cart</button>
               </div>
             </div>
