@@ -28,3 +28,13 @@
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+.carousel_container {
+  height: 25rem;
+  margin: 2rem auto;
+
+  @include media-queries($md, 999999px) {
+    width: 500px;
+    padding: 0;
+  }
+}
