@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 // Components
 import { Icon } from "../../components/Icon/Icon";
 import { Quantity } from "../../components/Quanity";
+import { CartContext } from "../../hooks/CartContext";
 
 import { FavouritesContext } from "../../hooks/FavouritesContext";
 
@@ -20,6 +21,7 @@ import styles from "./Bike.module.scss";
 export const Bike = () => {
   const { bikeId } = useParams();
   const [, , toggleFavourite, isFavourite] = useContext(FavouritesContext);
+  const [cart, setCart] = useContext(CartContext);
 
   const [data, setData] = useState({});
   const [quantity, setQuantity] = useState(1);
@@ -40,6 +42,10 @@ export const Bike = () => {
 
     getBike();
   }, []);
+
+  if (quantity <= 0) {
+    setQuantity(1);
+  }
 
   if (!data.bike) {
     return <h1 className="error">{error}</h1>;
@@ -101,7 +107,18 @@ export const Bike = () => {
               {/* Cart */}
               <div className={styles.cart}>
                 <Quantity quantity={quantity} setQuantity={setQuantity} />
-                <button className="btn">Add to cart</button>
+                <button
+                  onClick={() => {
+                    const newCart = cart.slice();
+
+                    newCart.push({ id: bike.id, quantity });
+
+                    setCart(newCart);
+                  }}
+                  className="btn"
+                >
+                  Add to cart
+                </button>
               </div>
             </div>
           </>
