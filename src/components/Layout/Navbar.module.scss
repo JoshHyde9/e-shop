@@ -14,6 +14,7 @@
     height: 100vh;
     width: 100vw;
     background-color: rgb(247, 247, 247);
+    z-index: 10;
 
     transition: all ease-in-out 300ms;
 
@@ -113,4 +114,21 @@
 
 .active {
   color: $brand-colour;
+}
+
+.cart {
+  display: flex;
+  gap: 0.5rem;
+
+  .notification {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1rem;
+    height: 1rem;
+    padding: 0.15rem;
+    background-color: red;
+    border-radius: 50%;
+    color: #fff;
+  }
 }

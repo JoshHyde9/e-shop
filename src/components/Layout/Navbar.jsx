@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { CartContext } from "../../hooks/CartContext";
 
 import styles from "./Navbar.module.scss";
 
@@ -53,6 +55,8 @@ const MobileNav = ({ open, setOpen }) => {
 };
 
 export const NavBar = () => {
+  const [cart] = useContext(CartContext);
+
   const [open, setOpen] = useState(false);
   return (
     <nav className={styles.nav_container}>
@@ -86,7 +90,15 @@ export const NavBar = () => {
           <CustomLink to="/">Home</CustomLink>
           <CustomLink to="/brand">Brands</CustomLink>
           <CustomLink to="/favourites">Favourites</CustomLink>
-          <CustomLink to="/cart">Cart</CustomLink>
+          <CustomLink to="/cart">
+            {cart.length > 0 ? (
+              <div className={styles.cart}>
+                Cart <div className={styles.notification}>{cart.length}</div>
+              </div>
+            ) : (
+              "Cart"
+            )}
+          </CustomLink>
         </div>
       </div>
     </nav>
