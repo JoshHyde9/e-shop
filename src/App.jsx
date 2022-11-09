@@ -5,8 +5,11 @@ import { Home } from "./pages/Home/Home";
 import { Bike } from "./pages/Bike/Bike";
 import { Brand } from "./pages/Brand/Brand";
 import { BrandName } from "./pages/Brand/BrandName/BrandName";
-import { FavouritesProvider } from "./hooks/FavouritesContext";
 import { Favourites } from "./pages/Favourites/Favourites";
+import { Cart } from "./pages/Cart/Cart";
+
+// Context
+import { FavouritesProvider } from "./hooks/FavouritesContext";
 
 export const App = () => {
   return (
@@ -17,6 +20,7 @@ export const App = () => {
         <Route path="/brand" element={<Brand />} />
         <Route path="/brand/:brandName" element={<BrandName />} />
         <Route path="/favourites" element={<Favourites />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </FavouritesProvider>
   );
