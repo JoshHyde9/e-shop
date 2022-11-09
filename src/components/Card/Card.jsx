@@ -50,9 +50,6 @@ export const Card = ({ bike, handleFavourite, favourited }) => {
               </>
             )}
           </div>
-          <div>
-            <Icon icon="addToCart" size="30px" strokeColour="#4d4d4d" />
-          </div>
         </div>
       </div>
     </div>
