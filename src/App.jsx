@@ -10,21 +10,18 @@ import { Cart } from "./pages/Cart/Cart";
 
 // Context
 import { FavouritesProvider } from "./hooks/FavouritesContext";
-import { CartProvider } from "./hooks/CartContext";
 
 export const App = () => {
   return (
-    <CartProvider>
-      <FavouritesProvider>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/bike/:bikeId" element={<Bike />} />
-          <Route path="/brand" element={<Brand />} />
-          <Route path="/brand/:brandName" element={<BrandName />} />
-          <Route path="/favourites" element={<Favourites />} />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
-      </FavouritesProvider>
-    </CartProvider>
+    <FavouritesProvider>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/bike/:bikeId" element={<Bike />} />
+        <Route path="/brand" element={<Brand />} />
+        <Route path="/brand/:brandName" element={<BrandName />} />
+        <Route path="/favourites" element={<Favourites />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
+    </FavouritesProvider>
   );
 };
