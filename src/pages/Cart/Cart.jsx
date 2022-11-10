@@ -32,12 +32,15 @@ export const Cart = () => {
 
   return (
     <div className={styles.cart_container}>
-      {dbCart.map((bike, i) => {
+      {dbCart.map((bike) => {
+        const element = cart.find(({ id }) => id === bike.id);
+        const index = cart.indexOf(element);
+
         return (
           <CartItem
             key={bike.id}
             bike={bike}
-            localCart={cart[i]}
+            localCart={cart[index]}
             removeFromCart={removeFromCart}
             updateCart={updateCart}
           />
