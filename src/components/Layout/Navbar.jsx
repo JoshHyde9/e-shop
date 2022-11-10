@@ -6,6 +6,7 @@ import { CartContext } from "../../hooks/CartContext";
 import styles from "./Navbar.module.scss";
 
 const MobileNav = ({ open, setOpen }) => {
+  const [cart] = useContext(CartContext);
   return (
     <div
       className={`${styles.nav_container__mobile_nav} ${
@@ -45,9 +46,24 @@ const MobileNav = ({ open, setOpen }) => {
           onClick={() => setOpen(!open)}
           to="/cart"
         >
-          {({ isActive }) => (
-            <span className={isActive ? styles.active : ""}>Cart</span>
-          )}
+          {({ isActive }) => {
+            return (
+              <>
+                {cart.length > 0 ? (
+                  <div
+                    className={`${styles.cart} ${
+                      isActive ? styles.active : ""
+                    }`}
+                  >
+                    Cart{" "}
+                    <div className={styles.notification}>{cart.length}</div>
+                  </div>
+                ) : (
+                  "Cart"
+                )}
+              </>
+            );
+          }}
         </NavLink>
       </div>
     </div>
