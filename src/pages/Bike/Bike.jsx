@@ -92,7 +92,9 @@ export const Bike = () => {
                 label="Size"
                 array={bike.sizes}
               />
-              {cartError.size && <p>{cartError.size}</p>}
+              {cartError.size && (
+                <p className={styles.option_error}>{cartError.size}</p>
+              )}
             </div>
 
             <div className={styles.option}>
@@ -101,7 +103,9 @@ export const Bike = () => {
                 label="Colour"
                 array={bike.colours}
               />
-              {cartError.colour && <p>{cartError.colour}</p>}
+              {cartError.colour && (
+                <p className={styles.option_error}>{cartError.colour}</p>
+              )}
             </div>
 
             {/* Cart */}
