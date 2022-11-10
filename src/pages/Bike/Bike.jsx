@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 // Components
 import { Icon } from "../../components/Icon/Icon";
 import { Quantity } from "../../components/Quanity";
+import { Selection } from "../../components/Selection/Selection";
 import { CartContext } from "../../hooks/CartContext";
 
 import { FavouritesContext } from "../../hooks/FavouritesContext";
@@ -26,6 +27,10 @@ export const Bike = () => {
   const [data, setData] = useState({});
   const [quantity, setQuantity] = useState(1);
   const [error, setError] = useState("");
+
+  const [colour, setColour] = useState("");
+  const [size, setSize] = useState("");
+  const [cartError, setCartError] = useState({ size: "", colour: "" });
 
   useEffect(() => {
     const getBike = async () => {
@@ -82,54 +87,66 @@ export const Bike = () => {
         {bike.quantity > 0 ? (
           <>
             <div className={styles.option}>
-              <label htmlFor="size">Size: </label>
-              <select className="select" name="size">
-                <option hidden>Size</option>
-                {bike.sizes.map((size, i) => (
-                  <option key={i} value={size}>
-                    {size}
-                  </option>
-                ))}
-              </select>
+              <Selection
+                handleOption={setSize}
+                label="Size"
+                array={bike.sizes}
+              />
+              {cartError.size && <p>{cartError.size}</p>}
             </div>
 
             <div className={styles.option}>
-              <label htmlFor="colour">Colour: </label>
-              <select className="select" name="colour">
-                <option hidden>Colour</option>
-                {bike.colours.map((colour, i) => (
-                  <option key={i} value={colour}>
-                    {colour}
-                  </option>
-                ))}
-              </select>
+              <Selection
+                handleOption={setColour}
+                label="Colour"
+                array={bike.colours}
+              />
+              {cartError.colour && <p>{cartError.colour}</p>}
+            </div>
 
-              {/* Cart */}
-              <div className={styles.cart}>
-                <Quantity quantity={quantity} setQuantity={setQuantity} />
-                <button
-                  onClick={() => {
-                    const newCart = cart.slice();
+            {/* Cart */}
+            <div className={styles.cart}>
+              <Quantity quantity={quantity} setQuantity={setQuantity} />
+              <button
+                onClick={() => {
+                  if (size.trim() === "") {
+                    setCartError({
+                      ...cartError,
+                      size: "Please select a size.",
+                    });
+                    return;
+                  }
 
-                    // If the item is already in the cart, update the quantity
-                    const item = cart.find(({ id }) => id === bike.id);
-                    const index = cart.indexOf(item);
+                  if (colour.trim() === "") {
+                    setCartError({
+                      ...cartError,
+                      colour: "Please select a colour.",
+                    });
+                    return;
+                  }
 
-                    if (item) {
-                      item.quantity = item.quantity + 1;
-                      newCart[index] = item;
-                      return setCart(newCart);
-                    } else {
-                      // If the item is not alreaddy in the cart
-                      newCart.push({ id: bike.id, quantity });
-                      setCart(newCart);
-                    }
-                  }}
-                  className="btn"
-                >
-                  Add to cart
-                </button>
-              </div>
+                  const newCart = cart.slice();
+
+                  // If the item is already in the cart, update the quantity
+                  const item = cart.find(({ id }) => id === bike.id);
+                  const index = cart.indexOf(item);
+
+                  if (item) {
+                    item.quantity = item.quantity + 1;
+                    newCart[index] = item;
+                    setCart(newCart);
+                    return setCartError({ size: "", colour: "" });
+                  } else {
+                    // If the item is not alreaddy in the cart
+                    newCart.push({ id: bike.id, quantity });
+                    setCart(newCart);
+                    return setCartError({ size: "", colour: "" });
+                  }
+                }}
+                className="btn"
+              >
+                Add to cart
+              </button>
             </div>
           </>
         ) : (
