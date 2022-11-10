@@ -113,20 +113,23 @@ export const Bike = () => {
               <Quantity quantity={quantity} setQuantity={setQuantity} />
               <button
                 onClick={() => {
-                  if (size.trim() === "") {
-                    setCartError({
-                      ...cartError,
+                  if (colour.trim() === "" && size.trim() === "") {
+                    return setCartError({
                       size: "Please select a size.",
+                      colour: "Please select a colour.",
                     });
-                    return;
                   }
 
                   if (colour.trim() === "") {
-                    setCartError({
-                      ...cartError,
+                    return setCartError({
                       colour: "Please select a colour.",
                     });
-                    return;
+                  }
+
+                  if (size.trim() === "") {
+                    return setCartError({
+                      size: "Please select a size.",
+                    });
                   }
 
                   const newCart = cart.slice();
