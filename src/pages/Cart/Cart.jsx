@@ -27,7 +27,9 @@ export const Cart = () => {
   }, [cart]);
 
   if (!dbCart) {
-    return <h1 className="error">Items added to your cart will appear here</h1>;
+    return (
+      <h1 className="error">Items added to your cart will appear here.</h1>
+    );
   }
 
   return (

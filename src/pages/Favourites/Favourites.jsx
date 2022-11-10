@@ -26,7 +26,7 @@ export const Favourites = () => {
 
   return !dbFavourites ? (
     <h1 className="error">
-      Pressing the heart icon will make favourited items appear here
+      Pressing the heart icon will make favourited items appear here.
     </h1>
   ) : (
     <div className={styles.gallery}>
