@@ -111,9 +111,19 @@ export const Bike = () => {
                   onClick={() => {
                     const newCart = cart.slice();
 
-                    newCart.push({ id: bike.id, quantity });
+                    // If the item is already in the cart, update the quantity
+                    const item = cart.find(({ id }) => id === bike.id);
+                    const index = cart.indexOf(item);
 
-                    setCart(newCart);
+                    if (item) {
+                      item.quantity = item.quantity + 1;
+                      newCart[index] = item;
+                      return setCart(newCart);
+                    } else {
+                      // If the item is not alreaddy in the cart
+                      newCart.push({ id: bike.id, quantity });
+                      setCart(newCart);
+                    }
                   }}
                   className="btn"
                 >
