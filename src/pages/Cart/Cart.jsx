@@ -26,7 +26,7 @@ export const Cart = () => {
     getCartItems();
   }, [cart]);
 
-  if (!dbCart || dbCart.length <= 0) {
+  if (!dbCart) {
     return <h1 className="error">Items added to your cart will appear here</h1>;
   }
 
