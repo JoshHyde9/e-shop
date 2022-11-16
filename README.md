@@ -84,6 +84,8 @@ I created `cart` and `favourites` arrays in the Local Storage. The favourites ar
 
 React's Context API is a godsend when it comes to passing data around. There are a few drawbacks though, especially when the Context API is not used properely. Passing data around that updates **a lot** massively slows down the app, I had to carefully curate how I was going to design the cart and favourite context to keep performance.
 
+I believe context was a good solution for this use case as data isn't going to be updated very often, I could've used a global state manager to make this even more simple like [like Redux](https://redux.js.org/) or [Zustand](https://zustand-demo.pmnd.rs/) but I believe that there wasn't enough data being passed around to take advantage of such tool.
+
 ### Why I used prop-types and JSDocs
 
 **I needed a better development expereience** since I am not using TypeScript ~~although, I should be~~, I needed a way to make sure I was going to be passing the correct props and their correct types into components as well as a big error if I was doing something wroong. JavaScript quickly becomes a nightmare with this as you get **absolutely nothing** back if you are doing something that you shouldn't be. JSDocs is another way to make my development experience a bit nicer, I can simulate type definitions and return types of functions, components and props, although it doesn't _really_ work and I don't get better errors and things like that, it makes VS Code's intellisense a bit more intelligent.
