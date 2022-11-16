@@ -89,3 +89,11 @@ I believe context was a good solution for this use case as data isn't going to b
 ### Why I used prop-types and JSDocs
 
 **I needed a better development expereience** since I am not using TypeScript ~~although, I should be~~, I needed a way to make sure I was going to be passing the correct props and their correct types into components as well as a big error if I was doing something wroong. JavaScript quickly becomes a nightmare with this as you get **absolutely nothing** back if you are doing something that you shouldn't be. JSDocs is another way to make my development experience a bit nicer, I can simulate type definitions and return types of functions, components and props, although it doesn't _really_ work and I don't get better errors and things like that, it makes VS Code's intellisense a bit more intelligent.
+
+## Database Model
+
+This is my very simple solution using a document database. If I were to use a relational database, I would make a one-to-many relationship to the brand name in the `brands` table, this would make the database querying a lot easier, type-safe and faster.
+
+I also wished I named the documents without a plural, I couldn't work out how to rename the documents without deleting the entire document, but by then I had filled the documents completely.
+
+![](public/assets/firestore-database-model.png)
