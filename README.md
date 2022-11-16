@@ -114,6 +114,6 @@ I believe context was a good solution for this use case as data isn't going to b
 
 This is my very simple solution using a document database. If I were to use a relational database, I would make a one-to-many relationship to the brand name in the `brands` table, this would make the database querying a lot easier, type-safe and faster.
 
-I also wished I named the documents without a plural, I couldn't work out how to rename the documents without deleting the entire document, but by then I had filled the documents completely.
+I also wish I named the documents without a plural, I couldn't work out how to rename the documents without deleting the entire document, but by then I had filled the documents completely.
 
 ![](public/assets/firestore-database-model.png)
