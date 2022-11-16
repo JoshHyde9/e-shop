@@ -18,12 +18,12 @@ An e-commerce site using React for the frontend and Firestore for the cloud stor
   - Display the price of the item.
   - Be clicked on and be routed to display more info of that specific item.
 
-![](/public/assets/home.png)
+![](public/assets/home.png)
 
 ### Brands
 
 Page is pretty simple, this page lists all of the brands of the items with clickable cards.
-![](/public/assets/brands.png)
+![](public/assets/brands.png)
 
 ### Brand
 
@@ -33,7 +33,7 @@ Page is very similar to the [home page](#home) in terms of functionality, only d
 ### Item
 
 This page is for displaying a specific item in the shop. It is basically an extension to the card. The user is able to select a size, colour, quantity and add the item to the cart. if the user does not select a size and or a colour, the UI will let the user know. How the item is added to the cart and store will be discussed [further down](#why-i-used-context).
-![](/public/assets/item.png)
+![](public/assets/item.png)
 
 ### Favourites
 
