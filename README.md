@@ -47,7 +47,7 @@ Page is pretty simple, this page lists all of the brands of the items with click
 
 ### Brand Page
 
-Page is very similar to the [home page](#home) in terms of functionality, only difference is that it only displays the items related to that specific brand.
+Page is very similar to the [home page](#home-page) in terms of functionality, only difference is that it only displays the items related to that specific brand.
 ![](public/assets/brand-page.png)
 
 ### Individual Shop Item Page
@@ -63,7 +63,7 @@ Page is very simple as it does what it says, yet it is some what complicated due
 
 ### Cart Page
 
-This page was a bit more technically difficult than I thought it would be initially, as I wanted the cart to persist when the user comes back to the site. I discuss how I solved it [further down](#why-i-used-context). There are a few more features I would like to add to this page, which are listed [below](#todo).
+This page was a bit more technically difficult than I thought it would be initially, as I wanted the cart to persist when the user comes back to the site. I discuss how I solved it [further down](#why-i-used-context). There are a few more features I would like to add to this page, which are listed [below](#features-i-want-to-implement).
 
 The cart's features are quite swish:
 
@@ -104,7 +104,7 @@ I created `cart` and `favourites` arrays in the Local Storage. The favourites ar
 
 React's Context API is a godsend when it comes to passing data around. There are a few drawbacks though, especially when the Context API is not used properely. Passing data around that updates **a lot** massively slows down the app, I had to carefully curate how I was going to design the cart and favourite context to keep performance.
 
-I believe context was a good solution for this use case as data isn't going to be updated very often, I could've used a global state manager to make this even more simple like [like Redux](https://redux.js.org/) or [Zustand](https://zustand-demo.pmnd.rs/) but I believe that there wasn't enough data being passed around to take advantage of such tool.
+I believe context was a good solution for this use case as data isn't going to be updated very often, I could've used a global state manager to make this even more simple like [Redux](https://redux.js.org/) or [Zustand](https://zustand-demo.pmnd.rs/) but I believe that there wasn't enough data being passed around to take advantage of such tool.
 
 ### Why I used prop-types and JSDocs
 
