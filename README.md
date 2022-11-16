@@ -2,9 +2,29 @@
 
 An e-commerce site using React for the frontend and Firestore for the cloud storage database. Although e-commerce sites have been done to death and this one in particular doesn't solve any real world problem, this is my rendition of one.
 
+## Table of Contents
+
+- [E-commerce site](#e-commerce-site)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+    - [Home Page](#home-page)
+    - [Brands Page](#brands-page)
+    - [Brand Page](#brand-page)
+    - [Individual Shop Item Page](#individual-shop-item-page)
+    - [Favourites Page](#favourites-page)
+    - [Cart Page](#cart-page)
+    - [Features I want to implement](#features-i-want-to-implement)
+  - [Decisions](#decisions)
+    - [Why I used Context](#why-i-used-context)
+      - [Prop drilling](#prop-drilling)
+      - [Reactivity and Local Storage](#reactivity-and-local-storage)
+      - [Drawbacks](#drawbacks)
+    - [Why I used prop-types and JSDocs](#why-i-used-prop-types-and-jsdocs)
+  - [Database Model](#database-model)
+
 ## Features
 
-### Home
+### Home Page
 
 - Image carousel with clickable items that route to their own page.
 - Every item in the shop is displayed on a card.
@@ -20,28 +40,28 @@ An e-commerce site using React for the frontend and Firestore for the cloud stor
 
 ![](public/assets/home.png)
 
-### Brands
+### Brands Page
 
 Page is pretty simple, this page lists all of the brands of the items with clickable cards.
 ![](public/assets/brands.png)
 
-### Brand
+### Brand Page
 
 Page is very similar to the [home page](#home) in terms of functionality, only difference is that it only displays the items related to that specific brand.
 ![](public/assets/brand-page.png)
 
-### Item
+### Individual Shop Item Page
 
 This page is for displaying a specific item in the shop. It is basically an extension to the card. The user is able to select a size, colour, quantity and add the item to the cart. if the user does not select a size and or a colour, the UI will let the user know. How the item is added to the cart and store will be discussed [further down](#why-i-used-context).
 ![](public/assets/item.png)
 
-### Favourites
+### Favourites Page
 
 Page is very simple as it does what it says, yet it is some what complicated due to the fact that there are no user accounts to make the favourites easily unique and I wanted the favourites to persist, I discuss my solution and reason [further down](#why-i-used-context).
 
 ![](public/assets/favourites.png)
 
-### Cart
+### Cart Page
 
 This page was a bit more technically difficult than I thought it would be initially, as I wanted the cart to persist when the user comes back to the site. I discuss how I solved it [further down](#why-i-used-context). There are a few more features I would like to add to this page, which are listed [below](#todo).
 
@@ -53,7 +73,7 @@ The cart's features are quite swish:
 
 ![](public/assets/cart.png)
 
-### TODO
+### Features I want to implement
 
 - [ ] On initial page load, load the items into a context to avoid contstant re-fetching from the database.
 - [ ] Display different coloured items depending on the colour selected.
