@@ -81,7 +81,7 @@ export const Bike = () => {
         <div className={styles.bike_container__info}>
           <h1>{bike.name}</h1>
           <p className={styles.price}>${bike.price.toLocaleString()}</p>
-          <p>Shop quantity: {bike.quantity}</p>
+          {bike.quantity && <p>Shop quantity: {bike.quantity}</p>}
         </div>
 
         {bike.quantity > 0 ? (
